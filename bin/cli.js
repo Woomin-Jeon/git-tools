@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
-'use strict'
+import checkout from '../src/commands/checkout.js';
 
 const runner = async (params) => {
-  const [command, ...options] =  params
+  const command = params[0];
 
-  console.log(command)
-}
+  if (command === 'checkout') {
+    checkout();
+  }
+};
 
-runner(process.argv.slice(2))
+runner(process.argv.slice(2));
