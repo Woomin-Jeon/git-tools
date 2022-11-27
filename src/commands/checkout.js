@@ -1,7 +1,6 @@
-import { execSync } from 'child_process';
-
 import { getBranchInfo } from '../utils/branch.js';
 import { stdin } from '../utils/stdio.js';
+import { exec } from '../utils/exec.js';
 
 const renderBranches = (branches, currentIndex) => {
   console.clear();
@@ -31,7 +30,7 @@ const checkout = () => {
 
     if (keyName === 'return' || keyName === 'space') {
       const selectedBranch = branches[currentBranchIndex];
-      execSync(`git checkout ${selectedBranch}`);
+      exec(`git checkout ${selectedBranch}`);
       processExit();
     }
 

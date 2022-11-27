@@ -1,7 +1,6 @@
-import { execSync } from 'child_process';
-
 import { getBranchInfo } from '../utils/branch.js';
 import { stdin } from '../utils/stdio.js';
+import { exec } from '../utils/exec.js';
 
 const renderBranches = (branches, selectedIndexes, currentIndex) => {
   console.clear();
@@ -40,7 +39,7 @@ const deleteBranch = () => {
       }
 
       const selectedBranches = [...selectedBranchIndexSet.values()].map((index) => branches[index]);
-      execSync(`git branch -D ${selectedBranches.join(', ')}`);
+      exec(`git branch -D ${selectedBranches.join(', ')}`);
       processExit();
     }
 
