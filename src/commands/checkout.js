@@ -1,7 +1,8 @@
-import fs from 'fs';
 import readline from 'readline';
 import ansiEscapes from 'ansi-escapes';
 import { execSync } from 'child_process';
+
+import { getBranchInfo } from '../utils/branch.js';
 
 const processInit = () => {
   console.clear();
@@ -26,21 +27,6 @@ const renderBranches = (branches, currentIndex) => {
       console.log(`    ${branch}`);
     }
   });
-};
-
-const getBranchInfo = () => {
-  const tempFilePath = new URL('../temp.branches.txt', import.meta.url);
-
-  execSync(`git branch > ${tempFilePath.pathname}`);
-  const fileData = fs.readFileSync(tempFilePath, { encoding: 'utf-8' });
-
-  const branches = fileData.split('\n').map((branch) => branch.trim()).filter(Boolean);
-  const headBranchIndex = branches.findIndex((branch) => branch.startsWith('*'));
-
-  return {
-    branches: branches.map((branch) => branch.replace(/\* /, '')),
-    headBranchIndex,
-  };
 };
 
 const checkout = () => {
