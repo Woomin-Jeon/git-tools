@@ -1,7 +1,7 @@
 import fs from 'fs';
 import readline from 'readline';
 import ansiEscapes from 'ansi-escapes';
-import { exec } from 'child_process';
+import { execSync } from 'child_process';
 
 const processInit = () => {
   console.clear();
@@ -34,7 +34,7 @@ const renderBranches = (branches, selectedIndexes, currentIndex) => {
 const getBranchInfo = () => {
   const tempFilePath = new URL('../temp.branches.txt', import.meta.url);
 
-  exec(`git branch > ${tempFilePath.pathname}`);
+  execSync(`git branch > ${tempFilePath.pathname}`);
   const fileData = fs.readFileSync(tempFilePath, { encoding: 'utf-8' });
 
   const branches = fileData.split('\n').map((branch) => branch.trim()).filter(Boolean);
@@ -70,7 +70,7 @@ const deleteBranch = () => {
       }
 
       const selectedBranches = [...selectedBranchIndexSet.values()].map((index) => branches[index]);
-      exec(`git branch -D ${selectedBranches.join(', ')}`);
+      execSync(`git branch -D ${selectedBranches.join(', ')}`);
       processExit();
     }
 

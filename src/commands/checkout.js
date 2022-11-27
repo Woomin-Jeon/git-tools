@@ -1,7 +1,7 @@
 import fs from 'fs';
 import readline from 'readline';
 import ansiEscapes from 'ansi-escapes';
-import { exec } from 'child_process';
+import { execSync } from 'child_process';
 
 const processInit = () => {
   console.clear();
@@ -31,7 +31,7 @@ const renderBranches = (branches, currentIndex) => {
 const getBranchInfo = () => {
   const tempFilePath = new URL('../temp.branches.txt', import.meta.url);
 
-  exec(`git branch > ${tempFilePath.pathname}`);
+  execSync(`git branch > ${tempFilePath.pathname}`);
   const fileData = fs.readFileSync(tempFilePath, { encoding: 'utf-8' });
 
   const branches = fileData.split('\n').map((branch) => branch.trim()).filter(Boolean);
@@ -61,7 +61,7 @@ const checkout = () => {
 
     if (keyName === 'return' || keyName === 'space') {
       const selectedBranch = branches[currentBranchIndex];
-      exec(`git checkout ${selectedBranch}`);
+      execSync(`git checkout ${selectedBranch}`);
       processExit();
     }
 
