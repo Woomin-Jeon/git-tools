@@ -18,5 +18,3 @@ export const stdin = (onKeyPress) => {
     onKeyPress({ key, processExit });
   });
 };
-
-export const xxx = 'xxx';

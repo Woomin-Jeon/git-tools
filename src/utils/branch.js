@@ -15,5 +15,3 @@ export const getBranchInfo = () => {
     headBranchIndex,
   };
 };
-
-export const xxx = 'xxx';

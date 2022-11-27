@@ -8,5 +8,3 @@ export const exec = (command) => {
     console.error(childProcessErrorMessage);
   }
 };
-
-export const xxx = 'xxx';
