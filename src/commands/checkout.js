@@ -1,21 +1,7 @@
-import readline from 'readline';
-import ansiEscapes from 'ansi-escapes';
 import { execSync } from 'child_process';
 
 import { getBranchInfo } from '../utils/branch.js';
-
-const processInit = () => {
-  console.clear();
-  readline.emitKeypressEvents(process.stdin);
-  process.stdin.setRawMode(true);
-  process.stdout.write(ansiEscapes.cursorHide);
-};
-
-const processExit = () => {
-  console.clear();
-  process.stdout.write(ansiEscapes.cursorShow);
-  process.exit();
-};
+import { stdin } from '../utils/stdio.js';
 
 const renderBranches = (branches, currentIndex) => {
   console.clear();
@@ -30,15 +16,13 @@ const renderBranches = (branches, currentIndex) => {
 };
 
 const checkout = () => {
-  processInit();
-
   const { branches, headBranchIndex } = getBranchInfo();
 
   let currentBranchIndex = headBranchIndex;
 
   renderBranches(branches, currentBranchIndex);
 
-  process.stdin.on('keypress', (_, key) => {
+  stdin(({ key, processExit }) => {
     const keyName = key.name;
 
     if (keyName === 'c' && key.ctrl) {
