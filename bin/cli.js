@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
 import { COMMAND } from '../src/constants/command.js';
+import config from '../src/config.js';
 import checkout from '../src/commands/checkout.js';
 import deleteBranch from '../src/commands/deleteBranch.js';
 
 const runner = async (params) => {
   const command = params[0];
 
-  switch (command) {
+  switch (config.withAlias(command)) {
     case COMMAND.CHECKOUT:
       checkout();
       break;
