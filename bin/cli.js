@@ -3,7 +3,7 @@
 import { COMMAND } from '../src/constants/command.js';
 import config from '../src/config.js';
 import checkout from '../src/commands/checkout.js';
-import deleteBranch from '../src/commands/deleteBranch.js';
+import branchDelete from '../src/commands/branchDelete.js';
 
 const runner = async (params) => {
   const command = params.join(' ');
@@ -13,7 +13,7 @@ const runner = async (params) => {
       checkout();
       break;
     case COMMAND.DELETE_BRANCH:
-      deleteBranch();
+      branchDelete();
       break;
     default:
       console.log('There are no matching commands. Use the command below.');

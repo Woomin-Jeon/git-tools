@@ -17,7 +17,7 @@ const renderBranches = (branches, selectedIndexes, currentIndex) => {
   });
 };
 
-const deleteBranch = () => {
+const branchDelete = () => {
   const { branches: _branches, headBranchIndex } = getBranchInfo();
   const branches = _branches.filter((_, index) => index !== headBranchIndex);
 
@@ -63,4 +63,4 @@ const deleteBranch = () => {
   });
 };
 
-export default deleteBranch;
+export default branchDelete;
