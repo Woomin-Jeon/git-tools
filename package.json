@@ -5,6 +5,11 @@
   "author": "Woomin-Jeon <dal96k@gmail.com>",
   "license": "MIT",
   "type": "module",
+  "bin": "./bin/cli.js",
+  "files": [
+    "bin",
+    "src"
+  ],
   "scripts": {
     "git-tools": "node ./bin/cli.js"
   },
