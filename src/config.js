@@ -2,7 +2,7 @@ import { COMMAND } from './constants/command.js';
 
 const alias = {
   co: COMMAND.CHECKOUT,
-  d: COMMAND.DELETE_BRANCH,
+  'b -D': COMMAND.DELETE_BRANCH,
 };
 
 const config = {

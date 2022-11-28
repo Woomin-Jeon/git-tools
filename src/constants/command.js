@@ -1,4 +1,4 @@
 export const COMMAND = {
   CHECKOUT: 'checkout',
-  DELETE_BRANCH: 'delete-branch',
+  DELETE_BRANCH: 'branch -D',
 };

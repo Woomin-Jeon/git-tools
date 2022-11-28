@@ -6,7 +6,7 @@ import checkout from '../src/commands/checkout.js';
 import deleteBranch from '../src/commands/deleteBranch.js';
 
 const runner = async (params) => {
-  const command = params[0];
+  const command = params.join(' ');
 
   switch (config.withAlias(command)) {
     case COMMAND.CHECKOUT:
