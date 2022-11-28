@@ -39,7 +39,7 @@ const deleteBranch = () => {
       }
 
       const selectedBranches = [...selectedBranchIndexSet.values()].map((index) => branches[index]);
-      exec(`git branch -D ${selectedBranches.join(', ')}`);
+      exec(`git branch -D ${selectedBranches.join(' ')}`);
       processExit();
     }
 
